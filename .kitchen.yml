@@ -1,0 +1,32 @@
+---
+driver_plugin: vagrant
+
+platforms:
+- name: ubuntu-12.04
+  driver_config:
+    box: vagrant-ubuntu-12.04
+    box_url: http://files.vagrantup.com/precise64.box
+    require_chef_omnibus: true
+  run_list:
+  - recipe[apt]
+
+suites:
+- name: strongloop_pass
+  run_list:
+  - recipe[strongloop::default]
+  attributes:
+    strongloop:
+      password: stronglooppassword
+- name: strongloop_nopass
+  run_list:
+  - recipe[strongloop::default]
+
+
+#- name: strongloop_encdbs
+#  encrypted_data_bag_secret_key_path: "~/.chef/encrypted_data_bag_secret"
+#  data_bags_path: "../../../data_bags"
+#  roles_path: "../../../roles"
+#  run_list:
+#  - recipe[strongloop::default]
+#  attributes:
+#    databag_name: strongloop_test
