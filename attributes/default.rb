@@ -3,3 +3,5 @@ default['strongloop']['destination'] = "/opt/strongloop"
 default['strongloop']['domain'] = "example.com"
 default['strongloop']['username'] = "strongloop"
 default['strongloop']['password'] = nil
+default['strongloop']['demofolder'] = "/home/#{node['strongloop']['username']}/samples"
+
